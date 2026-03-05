@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Practical 4 - Tables in HTML5</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', sans-serif; background: #f0f4f8; color: #222; }
+    header {
+      background: linear-gradient(135deg, #4a148c, #7b1fa2);
+      color: white; padding: 24px 40px; text-align: center;
+    }
+    header h1 { font-size: 2rem; margin-bottom: 6px; }
+    .container { max-width: 980px; margin: 30px auto; padding: 0 20px; }
+    .card {
+      background: white; border-radius: 10px; padding: 28px;
+      margin-bottom: 30px; box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+    }
+    .card h2 {
+      color: #4a148c; margin-bottom: 18px; font-size: 1.3rem;
+      border-bottom: 2px solid #e1bee7; padding-bottom: 8px;
+    }
+    .card p { color: #666; font-size: 0.9rem; margin-bottom: 14px; }
+
+    /* Timetable */
+    .timetable { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    .timetable caption {
+      font-size: 1.1rem; font-weight: bold; color: #4a148c;
+      padding: 10px 0; text-align: left;
+    }
+    .timetable thead th {
+      background: #6a1b9a; color: white; padding: 12px 10px; text-align: center;
+    }
+    .timetable tfoot td {
+      background: #f3e5f5; color: #4a148c; padding: 10px;
+      text-align: center; font-style: italic; font-size: 0.85rem;
+    }
+    .timetable tbody tr:nth-child(even) { background: #fce4ec; }
+    .timetable tbody tr:nth-child(odd)  { background: #f3e5f5; }
+    .timetable tbody tr:hover { background: #e1bee7; }
+    .timetable td, .timetable th { border: 1px solid #ce93d8; padding: 10px 8px; text-align: center; }
+    .time-col { background: #7b1fa2 !important; color: white; font-weight: bold; }
+    .break-row td { background: #ede7f6 !important; color: #6a1b9a; font-style: italic; font-weight: bold; }
+
+    /* Student Record */
+    .student-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    .student-table caption {
+      font-size: 1.1rem; font-weight: bold; color: #1a237e;
+      padding: 10px 0; text-align: left;
+    }
+    .student-table thead th {
+      background: #283593; color: white; padding: 12px 14px; text-align: left;
+    }
+    .student-table tfoot td {
+      background: #e8eaf6; color: #283593; padding: 10px 14px; font-weight: bold;
+    }
+    .student-table tbody tr:nth-child(even) { background: #e8eaf6; }
+    .student-table tbody td { padding: 10px 14px; border: 1px solid #c5cae9; }
+    .student-table tbody tr:hover { background: #c5cae9; }
+    .pass { color: #2e7d32; font-weight: bold; }
+    .fail { color: #c62828; font-weight: bold; }
+
+    footer {
+      background: #4a148c; color: #ce93d8; text-align: center;
+      padding: 18px; font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Practical 4 — Tabular Data in HTML5</h1>
+  <p>Timetable & Student Record using Advanced Table Tags</p>
+</header>
+
+<div class="container">
+
+  <!-- TIMETABLE -->
+  <div class="card">
+    <h2>Table 1: Class Timetable</h2>
+    <p>Uses: &lt;table&gt;, &lt;caption&gt;, &lt;thead&gt;, &lt;tbody&gt;, &lt;tfoot&gt;, colspan, rowspan</p>
+    <table class="timetable">
+      <caption>Weekly Timetable — 2nd Semester CSE (NEP 2025-26)</caption>
+      <thead>
+        <tr>
+          <th>Time / Day</th>
+          <th>Monday</th>
+          <th>Tuesday</th>
+          <th>Wednesday</th>
+          <th>Thursday</th>
+          <th>Friday</th>
+          <th>Saturday</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="time-col">9:00 - 10:00</td>
+          <td>Mathematics</td>
+          <td>Physics</td>
+          <td>Web Design</td>
+          <td>Mathematics</td>
+          <td>Physics</td>
+          <td>Web Design Lab</td>
+        </tr>
+        <tr>
+          <td class="time-col">10:00 - 11:00</td>
+          <td>Physics</td>
+          <td>Web Design</td>
+          <td>Mathematics</td>
+          <td>Web Design</td>
+          <td>Mathematics</td>
+          <td rowspan="2">Web Design Lab</td>
+        </tr>
+        <tr>
+          <td class="time-col">11:00 - 12:00</td>
+          <td>Web Design</td>
+          <td>Mathematics</td>
+          <td>Physics</td>
+          <td>Physics Lab</td>
+          <td>Web Design</td>
+        </tr>
+        <tr class="break-row">
+          <td class="time-col">12:00 - 1:00</td>
+          <td colspan="6">🍱 LUNCH BREAK</td>
+        </tr>
+        <tr>
+          <td class="time-col">1:00 - 2:00</td>
+          <td>Communication</td>
+          <td>Physics Lab</td>
+          <td>Web Design Lab</td>
+          <td>Communication</td>
+          <td>Elective</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td class="time-col">2:00 - 3:00</td>
+          <td>Elective</td>
+          <td>Physics Lab</td>
+          <td>Web Design Lab</td>
+          <td>Elective</td>
+          <td>Communication</td>
+          <td>—</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="7">Note: Lab sessions use rowspan. Lunch break uses colspan=6.</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <!-- STUDENT RECORD -->
+  <div class="card">
+    <h2>Table 2: Student Record</h2>
+    <p>Uses: thead, tbody, tfoot with colspan for summary row</p>
+    <table class="student-table">
+      <caption>Student Academic Record — 2nd Semester Examination</caption>
+      <thead>
+        <tr>
+          <th>Roll No.</th>
+          <th>Student Name</th>
+          <th>Maths</th>
+          <th>Physics</th>
+          <th>Web Design</th>
+          <th>Communication</th>
+          <th>Total</th>
+          <th>Percentage</th>
+          <th>Grade</th>
+          <th>Result</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>CSE001</td><td>Aarav Sharma</td>
+          <td>85</td><td>78</td><td>92</td><td>88</td>
+          <td>343</td><td>85.75%</td><td>A</td><td class="pass">PASS</td>
+        </tr>
+        <tr>
+          <td>CSE002</td><td>Priya Deshmukh</td>
+          <td>90</td><td>85</td><td>95</td><td>91</td>
+          <td>361</td><td>90.25%</td><td>O</td><td class="pass">PASS</td>
+        </tr>
+        <tr>
+          <td>CSE003</td><td>Rohan Patil</td>
+          <td>70</td><td>65</td><td>78</td><td>72</td>
+          <td>285</td><td>71.25%</td><td>B</td><td class="pass">PASS</td>
+        </tr>
+        <tr>
+          <td>CSE004</td><td>Sneha Joshi</td>
+          <td>75</td><td>68</td><td>82</td><td>76</td>
+          <td>301</td><td>75.25%</td><td>B+</td><td class="pass">PASS</td>
+        </tr>
+        <tr>
+          <td>CSE005</td><td>Amit Nagpure</td>
+          <td>45</td><td>52</td><td>60</td><td>50</td>
+          <td>207</td><td>51.75%</td><td>C</td><td class="pass">PASS</td>
+        </tr>
+        <tr>
+          <td>CSE006</td><td>Kavita Meshram</td>
+          <td>35</td><td>40</td><td>55</td><td>38</td>
+          <td>168</td><td>42.00%</td><td>D</td><td class="fail">FAIL</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="6">Class Average</td>
+          <td>277.5</td><td>69.37%</td>
+          <td colspan="2">Pass Rate: 83.33%</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+</div>
+
+<footer>
+  Practical 4 | CO2 | Module 2 | Web Designing (VSC) 2nd Semester | S.B. Jain Institute
+</footer>
+
+</body>
+</html>
